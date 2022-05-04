@@ -2,15 +2,27 @@
 
 A Flutter project with sql database that allows you to calculate family budjet and to get reports.
 
-## Getting Started
+## Description
 
-This project is a starting point for a Flutter application.
+В ходе выполнения данного задания, было разработанно мобильное приложение на фреймворке Flutter для языка Dart, в среде Android Studio. 
+Приложение позволяет:
+*добавить запись в семейный бюджет (пользователь, сумма, тип и категория транзакции)
+*удалить запись из семейного бюджета
+*просмотреть все записи в семейном бюджете
+*вывести текстовый отчет по всем расходам семьи
+*вывести текстовый отчет по всем доходам семьи
+В планах реализовать, но не хватило времени (уже готов UI):
+*авторизация
+*вывод отчета с графиками (пока не разобрался как именно создать series для flutter_charts из массива объектов БД)
+ 
+ Описание API функции просмотра записей:
+На странице budget пользователь видит все записи, внесенные в базу данных. При загрузке страницы приложение производит SQL запрос с помощью метода getBudgetEntries() класса DatabaseHelper и выводит все записи в таблице.
+ Описание API функции добавления записи:
+ На странице budget при нажатии на FloatingActionButton пользователь перенаправляется на страницу form, на которой ему требуется заполнить поля формы, для создания новой записи. При корректном заполнении формы, после нажатия кнопки "Подтвердить" в базе данных создается новая запись. Из первой Dropdown Button берется тип транзакции, из остальных TextInput берется соответственно сумма, пользователь и категория. С помощью метода add(BudgetEntry entry) класса DatabaseHelper происходит добавление записи в базу данных. 
+ Описание API функции удаления записи:
+На странице budget при нажатии кнопки "Удалить", расположенной на нужной записи, из базы данных удаляется выбранная запись (по ID) с помощью метода remove(int id) класса DatabaseHelper происходит удаление записи из базы данных.
+ Описание API функции вывода текстового отчет по расходам семьи:
+При нажатии соответствующей кнопки на странице reports, приложение производит SQL запрос с типом транзакции "Потрачено" с помощью метода getExpensesEntries() класса DatabaseHelper и выводит только записи о расходах
+ Описание API функции вывода текстового отчет по доходам семьи:
+При нажатии соответствующей кнопки на странице reports, приложение производит SQL запрос с типом транзакции "Получено" с помощью метода getIncomeEntries() класса DatabaseHelper и выводит только записи о доходах
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
