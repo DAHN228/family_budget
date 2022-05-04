@@ -1,2 +1,2 @@
 # family_budget
-Mobile App Test Exercise
+Flutter Mobile App Test Exercise
